@@ -1,0 +1,52 @@
+<html>
+
+<head>
+  <!-- This will show up as the title for bookmarks and in the tab -->
+  <title>Excel Thing</title>
+
+  <!-- This one is a requirement for using exceljs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.js"></script>
+
+  <!-- This is pulling the main excel library from a third-party server so we don't have to host it -->
+  <!-- https://www.npmjs.com/package/exceljs for documentation -->
+  <script src="https://cdn.jsdelivr.net/npm/exceljs@4.2.0/dist/exceljs.min.js"></script>
+
+  <script src="./js/utils.js"></script>
+
+  <script src="./js/gutter-spread.js"></script>
+  <script src="./js/design.js"></script>
+  <script src="./js/velocity.js"></script>
+</head>
+
+<body>
+  <!-- Start page layout -->
+  <h1>Pipe Tools</h1>
+  <div>
+    <h2>Gutter Spread</h2>
+    <form onSubmit="handleGutterSpread(event)">
+      <label for="files">Files</label>
+      <input type="file" name="files" id="files" multiple="true" />
+      <hr />
+      <button type="submit">Process</button>
+    </form>
+
+    <h2>Velocity</h2>
+    <form onSubmit="handleVelocity(event)">
+      <label for="files">Files</label>
+      <input type="file" name="files" id="files" multiple="true" />
+      <hr />
+      <button type="submit">Process</button>
+    </form>
+
+    <h2>Design</h2>
+    <form onSubmit="handleDesign(event)">
+      <label for="files">Files</label>
+      <input type="file" name="files" id="files" multiple="true" />
+      <hr />
+      <button type="submit">Process</button>
+    </form>
+  </div>
+  <!-- End page layout -->
+</body>
+
+</html>
