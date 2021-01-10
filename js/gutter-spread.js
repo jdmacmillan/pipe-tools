@@ -19,7 +19,7 @@ function getWorkbookName(files) {
 // Convert the actual files to the desired workbook
 async function processFiles(files) {
   const workbook = new ExcelJS.Workbook();
-  console.log('initialized workbook', workbook);
+  console.log('initialized workbook, yay', workbook);
 
   for (file of files) {
     const sheetName = file.name.replace('.txt', '').toUpperCase();
