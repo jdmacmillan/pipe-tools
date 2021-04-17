@@ -3,7 +3,7 @@ const gutterSpread = (() => {
     // The default behavior is for the page to refresh on form submit.  This will prevent that.
     event.preventDefault();
 
-    const files = getFiles();
+    const files = getFiles("gutter");
 
     const workbook = await processFiles(files);
     const workbookName = getWorkbookName(files);
@@ -40,7 +40,7 @@ const gutterSpread = (() => {
       console.log('first sheet', sheet);
 
       const text = await file.text();
-      const lines = text.split('\n')
+      text.split('\n')
         .map(formatRow)
         .map(attemptToParse)
         .forEach(r => sheet.addRow(r));
@@ -50,15 +50,6 @@ const gutterSpread = (() => {
     }
 
     return workbook;
-  }
-
-  function attemptToParse(row) {
-    return row.map(column => {
-      const number = parseFloat(column, 10);
-
-      if (Number.isNaN(number)) return column;
-      return number;
-    });
   }
 
   function getColumnDef(width = 10) {
@@ -91,11 +82,11 @@ const gutterSpread = (() => {
     const columns = rowText.split(',').filter((_, i) => [0, 3, 9, 10, 11].indexOf(i) === -1);
     if (index >= 2) {
       if (columns[7].toLowerCase() === 'sag' || columns[0].startsWith('DI')) {
-        columns[7] = 'N/A';
         columns[8] = 'N/A';
       }
 
       columns[1] = columns[1].toUpperCase();
+      columns[7] = columns[7].toUpperCase();
     }
     return columns;
   }

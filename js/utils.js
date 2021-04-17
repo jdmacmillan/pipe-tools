@@ -7,8 +7,8 @@ function attemptToParse(row) {
   });
 }
 
-function getFiles() {
-  const fileInput = document.getElementById('files');
+function getFiles(inputType) {
+  const fileInput = document.getElementById(`${inputType}Files`);
   return fileInput.files;
 }
 
@@ -36,4 +36,13 @@ function downloadWorkbook(workbook, workbookName) {
     .catch(function (error) {
       console.error(error.message);
     });
+}
+
+function attemptToParse(row) {
+  return row.map(column => {
+    const number = parseFloat(column, 10);
+
+    if (Number.isNaN(number)) return column;
+    return number;
+  });
 }
